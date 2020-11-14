@@ -4,17 +4,18 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "node ./ClosestDeadline.js && docusaurus start",
+    "build": "node ./ClosestDeadline.js && build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve"
+    "deploy": "node ./ClosestDeadline.js && docusaurus deploy",
+    "serve": "node ./ClosestDeadline.js && docusaurus serve"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.66",
     "@docusaurus/preset-classic": "2.0.0-alpha.66",
     "@mdx-js/react": "^1.5.8",
     "clsx": "^1.1.1",
+    "line-reader": "^0.4.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.31",
     "react": "^16.8.4",

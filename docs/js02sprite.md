@@ -8,10 +8,7 @@ title: ЛР2. Двигаем спрайт
 import DeadlineDisplay from '../src/DeadlineDisplay'
 
 :::important
-Приглашение: https://git.io/JTtYO <br/>
-Дедлайн: 28 окт 2020 23:59
-
-<DeadlineDisplay />
+<DeadlineDisplay link='https://git.io/JTtYO' deadline='2020-10-28 23:59' title='ЛР2. Двигаем спрайт'/>
 :::
 
 Мы напишем программу для движения персонажа на игровом поле,

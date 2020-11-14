@@ -21,7 +21,7 @@ title: Редакторы кода
 
 ## [Visual Studio Code](https://https://code.visualstudio.com/)
 
-Среда разработки от Microsoft с открытым исходным кодом. Бурно развивается. Есть в версиях для Windows/macOS/Linux. Развитая система тем офромления и пакетов расширения. Интегрированная поддержка git. (62.6 МБ)
+Среда разработки от Microsoft с открытым исходным кодом. Бурно развивается. Есть в версиях для Windows/macOS/Linux. Развитая система тем оформления и пакетов расширения. Интегрированная поддержка git. (62.6 МБ)
 
 ![VS Code Screenshot](../static/img/editors-vscode.png 'Visual Studio Code')
 

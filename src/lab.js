@@ -1,0 +1,1 @@
+export var activelab = { "name":"ЛР3. Простые ветвления","deadline":"2020-11-15 23:59","url":"https://git.io/JT5Gs"};
