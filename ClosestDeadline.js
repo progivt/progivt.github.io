@@ -6,8 +6,6 @@ const moment = require('moment-timezone');
 moment.locale('ru');
 moment().format('lll');
 
-console.log("Test");
-
 let closestDeadlineDate = ''; // мегакостыль
 let closestDeadlineTitle = '';
 let closestDeadlineLink = '';
@@ -51,13 +49,12 @@ function processDeadline(line) {
             if (isCloser) closestDeadlineTitle = res[i+1];
         }
     }
-    
+
     console.log();
     printResult();
 }
 
 function readFiles(dirname) {
-    console.log(dirname);
     fs.readdir(dirname, function(err, filenames) {
     if (err) {
       return;
