@@ -1,1 +1,1 @@
-export var activelab = { "name":"ЛР3. Простые ветвления","deadline":"2020-11-15 23:59","url":"https://git.io/JT5Gs"};
+export var activelab = { "name":"ЛР4. Циклы","deadline":"2020-11-18 23:59","url":"будет позже"};

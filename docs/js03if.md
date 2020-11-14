@@ -8,7 +8,7 @@ import DeadlineDisplay from '../src/DeadlineDisplay.js'
 Сдавать, как описано в [инструкции](labs.md).
 
 :::important
-<DeadlineDisplay link='https://git.io/JT5Gs' deadline='2020-11-15 23:59' title='ЛР3. Простые ветвления'/>
+<DeadlineDisplay link='https://git.io/JT5Gs' deadline='2020-11-11 23:59' title='ЛР3. Простые ветвления'/>
 :::
 
 Нужно сдать четыре задачи, номера которых написаны в конце pdf-файла с условиями внутри репозитория. Находите свой номер в списке группы в [Табличке](https://docs.google.com/spreadsheets/d/13NEztGQWOVKS7TdsKctvaWNkH0_pQDyrPta67bUvOLE), в pdf-файле смотрите номера. Например, Тимофеев Илья в списке группы 28-й. Заглядываем в конец файла с условиями, видим
