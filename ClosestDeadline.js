@@ -19,7 +19,7 @@ function printResult() {
 function processDeadline(line) {
     console.log(line);
 
-    let res = line.split('\'');
+    let res = line.split(/[\'\"]+/);
     let isCloser = false;
 
     let resLen = res.length;
