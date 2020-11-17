@@ -10,12 +10,9 @@ function checkLabDeadline(deadline) {
   return '';
 }
 
-
 export default class DeadlineDisplay extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log("Creation");
 
     this.deadline = '';
     this.deadlineFormatted = '';

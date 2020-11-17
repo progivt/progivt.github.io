@@ -65,6 +65,7 @@ var displayDeadlineInterval = false;
 function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+
   setInterval(function()
   {
     if (displayDeadlineInterval) return false;
@@ -87,6 +88,11 @@ function Home() {
 
             docTitle.innerHTML = url;
             docSubtitle.textContent = "До конца лабы: " + deadlineM.diff(timeNow, 'days') + ' дн. ' + moment.utc(deadlineM.diff(timeNow)).format('HH:mm:ss');
+          }
+          else {
+            docTitle.innerHTML = '';
+            docTitle.textContent = siteConfig.title;
+            docSubtitle.textContent = siteConfig.tagline;
           }
         }
       } 
