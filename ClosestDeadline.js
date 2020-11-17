@@ -61,12 +61,11 @@ function readFiles(dirname) {
     }
 
     filenames.forEach(function(filename) {
+        console.log("Checking file: " + dirname + filename);
         lineReader.eachLine(dirname + filename, function(line) {
         if (line.includes('<DeadlineDisplay')) {
             console.log("Found deadline in file " + dirname + filename);
             processDeadline(line);
-
-            return false;
         }});
     });
   });
