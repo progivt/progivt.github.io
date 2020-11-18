@@ -6,12 +6,10 @@ const moment = require('moment-timezone');
 moment.locale('ru');
 moment().format('lll');
 
-let closestDeadlineDate = ''; // мегакостыль
-let closestDeadlineTitle = '';
-let closestDeadlineLink = '';
+let activeLabs = new Array();
 
 function printResult() {
-    let toWrite = "export var activelab = { \"name\":\"" + closestDeadlineTitle + "\",\"deadline\":\"" + closestDeadlineDate + "\",\"url\":\"" + closestDeadlineLink + "\"};"; 
+    let toWrite = "export var activeLabs = " + JSON.stringify(activeLabs) + ";";
     
     fs.writeFile("./src/lab.js", toWrite, function(){});
 }
@@ -20,37 +18,48 @@ function processDeadline(line) {
     console.log(line);
 
     let res = line.split(/[\'\"]+/);
-    let isCloser = false;
+    let isValid = false;
+
+    let lab = {
+        name:'',
+        url:'',
+        deadline:'',
+        timestamp:0
+    }
 
     let resLen = res.length;
     for (let i = 0; i < resLen; i++) {
         if (res[i].includes('deadline')) {
-            console.log("Deadline: " + res[i+1]);
-
             let deadlineTemp = moment.tz(res[i+1], "Asia/Yakutsk");
-            let closestDeadline = moment.tz(closestDeadlineDate, "Asia/Yakutsk");
             let now = moment.tz("Asia/Yakutsk");
 
-            if (deadlineTemp.isSameOrAfter(now) && (!deadlineTemp.isSameOrAfter(closestDeadline) || closestDeadline.isSameOrBefore(now))) {
-                closestDeadlineDate = res[i+1];
-                if (!isCloser) i = 0;
-                isCloser = true;
-                console.log("New closest deadline: " + closestDeadlineDate);
+            if (deadlineTemp.isSameOrAfter(now)) {
+                lab.deadline = res[i+1];
+                lab.timestamp = deadlineTemp.valueOf();
+                if (!isValid) i = 0;
+                isValid = true;          
             }
         }
 
         if (res[i].includes('link')) {
-            console.log("Invite link: " + res[i+1]);
-            if (isCloser) closestDeadlineLink = res[i+1];
+            if (isValid) {
+                lab.url = res[i+1];
+            }
         }
 
         if (res[i].includes('title')) {
-            console.log("Lab title: " + res[i+1]);
-            if (isCloser) closestDeadlineTitle = res[i+1];
+            if (isValid) {
+                lab.name = res[i+1];
+            } 
         }
     }
 
-    console.log();
+    if (isValid) {
+        console.log(lab);
+        activeLabs.push(lab);
+        activeLabs.sort((c1, c2) => (c1.timestamp < c2.timestamp) ? -1 : (c1.timestamp > c2.timestams) ? 1 : 0);
+    }
+
     printResult();
 }
 
