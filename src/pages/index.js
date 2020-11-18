@@ -8,8 +8,9 @@ import styles from './styles.module.css';
 import moment from 'moment-timezone';
 
 moment.locale('ru');
+moment().format('lll');
 
-import {getLabData} from '../LabController.js'; // не придумал ничего лучше, потом допилю - ThePetrovich
+import {activelab} from '../lab.js'; // не придумал ничего лучше, потом допилю - ThePetrovich
 
 const features = [
   {
@@ -64,6 +65,7 @@ var displayDeadlineInterval = false;
 function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+
   setInterval(function()
   {
     if (displayDeadlineInterval) return false;
@@ -75,9 +77,9 @@ function Home() {
       let docSubtitle = document.getElementById("heroSubtitle");
     
       if (docTitle) {
-        let data = getLabData();
+        let data = activelab;
         
-        if (data) {
+        if (data.deadline) {
           if (moment(data.deadline).diff(moment()) > 0) {
             let deadlineM = moment.tz(data.deadline, "Asia/Yakutsk");
             let timeNow = moment().tz("Asia/Yakutsk");
@@ -86,6 +88,11 @@ function Home() {
 
             docTitle.innerHTML = url;
             docSubtitle.textContent = "До конца лабы: " + deadlineM.diff(timeNow, 'days') + ' дн. ' + moment.utc(deadlineM.diff(timeNow)).format('HH:mm:ss');
+          }
+          else {
+            docTitle.innerHTML = '';
+            docTitle.textContent = siteConfig.title;
+            docSubtitle.textContent = siteConfig.tagline;
           }
         }
       } 
