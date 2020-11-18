@@ -12,7 +12,7 @@ import DeadlineDisplay from '../src/DeadlineDisplay.js'
 <DeadlineDisplay link='https://git.io/JkWqP' deadline='2020-11-25 23:59' title='ЛР4. Циклы' expiredText="Индивидуальные задачи больше не принимаются." activeText="До сдачи индивидуальных задач: " supressOutput="1"/>
 :::
 
-Нужно сдать 5 общих задач и 6 индивидуальных. Пока делайте у себя, чуть позже будет лаба на GH Classroom c репозиториями. Когда появится, склонируете, скопируете то что наработали, поверх.
+Нужно сдать 5 общих задач и 6 индивидуальных, срок сдачи индивидуальных на неделю позже, чем общих. 
 
-Условия тут: https://drive.google.com/open?id=1-p_d9BWDD_iIqFK615m7I1FYBjmj4_45
+В репозитории есть только ссылка на PDF с условиями. Этот файл на самом деле лежит [тут](https://drive.google.com/open?id=1-p_d9BWDD_iIqFK615m7I1FYBjmj4_45).
 
