@@ -10,7 +10,8 @@ import moment from 'moment-timezone';
 moment.locale('ru');
 moment().format('lll');
 
-import {activelab} from '../lab.js'; // не придумал ничего лучше, потом допилю - ThePetrovich
+import {activeLabs} from '../lab.js'; // не придумал ничего лучше, потом допилю - ThePetrovich
+let activeLab = null;
 
 const features = [
   {
@@ -60,11 +61,26 @@ function Feature({imageUrl, title, description, link}) {
   );
 }
 
+function getClosestDeadline() {
+  if (activeLabs) {
+    if (activeLabs.length) {
+      for (let i = 0; i < activeLabs.length; i++) {
+        if (moment(activeLabs[i].deadline).diff(moment()) > 0) {
+          activeLab = activeLabs[i];
+          break;
+        }
+      }
+    }
+  }
+}
+
 var displayDeadlineInterval = false;
 
 function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
+
+  getClosestDeadline();
 
   setInterval(function()
   {
@@ -76,8 +92,8 @@ function Home() {
       let docTitle = document.getElementById("heroTitle");
       let docSubtitle = document.getElementById("heroSubtitle");
     
-      if (docTitle) {
-        let data = activelab;
+      if (docTitle && activeLab) {
+        let data = activeLab;
         
         if (data.deadline) {
           if (moment(data.deadline).diff(moment()) > 0) {
