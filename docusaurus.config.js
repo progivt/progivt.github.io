@@ -43,7 +43,16 @@ module.exports = {
               href: 'https://learn.javascript.ru/',
             },
             {
-              label: 'CS50 по-русски',
+              label: 'JavaScript: основы и функции, МФТИ@Coursera',
+              href: 'https://www.coursera.org/learn/javascript-osnovy-i-funktsii',
+            },
+          ],
+        },
+        {
+          title: 'Ещё',
+          items: [
+            {
+              label: 'Гарвардский курс CS50 по-русски',
               href: 'https://www.youtube.com/playlist?list=PLawfWYMUziZqyUL5QDLVbe3j5BKWj42E5',
             },
             {
