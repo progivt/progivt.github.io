@@ -20,7 +20,7 @@ const features = [
     imageUrl: 'img/table.png',
     description: (
       <>
-        Все заслуги здесь. Необходимо выполнить вход в аккаунт Google.
+        Все заслуги здесь. Необходимо войти в&nbsp;аккаунт Google.
       </>
     ),
   },
@@ -30,7 +30,7 @@ const features = [
     imageUrl: 'img/videos.png',
     description: (
       <>
-        Записи лекций и практики в период  дистанционного обучениия
+        Записи лекций и практики в период дистанционного обучениия
       </>
     ),
   },
@@ -130,7 +130,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/')}>
+              to={useBaseUrl('docs/js04loop')}>
               Начать
             </Link>
           </div>

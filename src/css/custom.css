@@ -28,3 +28,11 @@ img.hitcount {
   vertical-align: middle;
   margin-left:10px;
 }
+
+.footer div.text--center div{
+  font-size: 75%;
+}
+
+.footer__links {
+  margin-bottom: 1.5rem;
+}
