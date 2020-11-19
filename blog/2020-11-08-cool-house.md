@@ -18,3 +18,5 @@ export const Video = ({children, src}) => (<video width='400' height='400' autop
 <Video src={useBaseUrl('img/House.mp4')}></Video>
 
 <img alt="House 2" src={useBaseUrl('img/house-1.png')} />
+
+<img alt="House 3" src={useBaseUrl('img/house-2.png')} />
