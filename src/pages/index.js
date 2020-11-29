@@ -7,11 +7,22 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 import moment from 'moment-timezone';
 
+import DeadlineDisplayMain from '../DeadlineDisplayMain'
+import {activeLabs} from '../lab.js';
+
 moment.locale('ru');
 moment().format('lll');
 
-import {activeLabs} from '../lab.js'; // не придумал ничего лучше, потом допилю - ThePetrovich
-let activeLab = null;
+function getLabBaseUrl() {
+  if (activeLabs.length) {
+    for (let i = 0; i < activeLabs.length; i++) {
+      if (moment(activeLabs[i].deadline).diff(moment()) > 0) {
+        return activeLabs[i].baseurl;
+      }
+    }
+  }
+  return '/docs';
+}
 
 const features = [
   {
@@ -61,61 +72,9 @@ function Feature({imageUrl, title, description, link}) {
   );
 }
 
-function getClosestDeadline() {
-  if (activeLabs) {
-    if (activeLabs.length) {
-      for (let i = 0; i < activeLabs.length; i++) {
-        if (moment(activeLabs[i].deadline).diff(moment()) > 0) {
-          activeLab = activeLabs[i];
-          break;
-        }
-      }
-    }
-  }
-}
-
-var displayDeadlineInterval = false;
-
 function Home() {
   const context = useDocusaurusContext();
   const {siteConfig = {}} = context;
-
-  getClosestDeadline();
-
-  setInterval(function()
-  {
-    if (displayDeadlineInterval) return false;
-  
-    displayDeadlineInterval = true;
-  
-    if (typeof(document) != 'undefined') {
-      let docTitle = document.getElementById("heroTitle");
-      let docSubtitle = document.getElementById("heroSubtitle");
-    
-      if (docTitle && activeLab) {
-        let data = activeLab;
-        
-        if (data.deadline) {
-          if (moment(data.deadline).diff(moment()) > 0) {
-            let deadlineM = moment.tz(data.deadline, "Asia/Yakutsk");
-            let timeNow = moment().tz("Asia/Yakutsk");
-
-            let url = `<a style="color:#FFFFFF" href="${data.url}">${data.name}</a>`;
-
-            docTitle.innerHTML = url;
-            docSubtitle.textContent = "До конца лабы: " + deadlineM.diff(timeNow, 'days') + ' дн. ' + moment.utc(deadlineM.diff(timeNow)).format('HH:mm:ss');
-          }
-          else {
-            docTitle.innerHTML = '';
-            docTitle.textContent = siteConfig.title;
-            docSubtitle.textContent = siteConfig.tagline;
-          }
-        }
-      } 
-    }
-    displayDeadlineInterval = false;
-  }, 1000);
-
   return (
     <Layout
       title={`${siteConfig.title}: Добро пожаловать `}
@@ -123,14 +82,15 @@ function Home() {
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title" id="heroTitle">{siteConfig.title}</h1>
-          <p className="hero__subtitle" id="heroSubtitle">{siteConfig.tagline}</p>
+          <p className="hero__subtitle" id="heroSubtitle"><DeadlineDisplayMain /></p>
           <div className={styles.buttons}>
             <Link
               className={clsx(
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/js04loop')}>
+              id="mainButtonLink"
+              to={useBaseUrl(getLabBaseUrl())}>
               Начать
             </Link>
           </div>
