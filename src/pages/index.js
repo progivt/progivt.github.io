@@ -130,7 +130,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/js04loop')}>
+              to={useBaseUrl('docs/js05arr')}>
               Начать
             </Link>
           </div>
