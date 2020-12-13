@@ -14,7 +14,7 @@ function printResult() {
     fs.writeFile("./src/lab.js", toWrite, function(){});
 }
 
-function processDeadline(line) {
+function processDeadline(line, file) {
     console.log(line);
 
     let res = line.split(/[\'\"]+/);
@@ -24,6 +24,7 @@ function processDeadline(line) {
         name:'',
         url:'',
         deadline:'',
+        baseurl:'',
         timestamp:0
     }
 
@@ -55,6 +56,9 @@ function processDeadline(line) {
     }
 
     if (isValid) {
+        file = file.replace('.md', '');
+        lab.baseurl = '/' + file;
+
         console.log(lab);
         activeLabs.push(lab);
         activeLabs.sort((c1, c2) => (c1.timestamp < c2.timestamp) ? -1 : (c1.timestamp > c2.timestams) ? 1 : 0);
@@ -74,7 +78,7 @@ function readFiles(dirname) {
         lineReader.eachLine(dirname + filename, function(line) {
         if (line.includes('<DeadlineDisplay')) {
             console.log("Found deadline in file " + dirname + filename);
-            processDeadline(line);
+            processDeadline(line, dirname + filename);
         }});
     });
   });
