@@ -1,7 +1,7 @@
 ---
 author: Тагрова Дарина
 author_url: https://github.com/Darina-1707
-title: Hack-the-ice 2.0
+title: "Hack-the-ice: мой первый хакатон"
 tags: [hackathon]
 ---
 состав команды: Апросимова Айаана, Говорова Дайаана, Ефимова Валерия, Тагрова Дарина, Платонова.
