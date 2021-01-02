@@ -90,8 +90,8 @@ function Home() {
                 styles.getStarted,
               )}
               id="mainButtonLink"
-              to={useBaseUrl(getLabBaseUrl())}>
-              Начать
+              to="./docs/js06game">
+              Игры сданы
             </Link>
           </div>
         </div>
